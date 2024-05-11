@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+
+    <style>
+        body {
+            background-color: #4f4f4f;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .countdown-container {
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .countdown-timer {
+            font-family: "Orbitron", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 700;
+            font-style: normal;
+            font-size: 36px;
+            /* font-weight: bold; */
+            color: aqua;
+            margin-bottom: 20px;
+        }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="countdown-container">
+        <div class="countdown-timer" id="countdown">
+            <!-- apna timer -->
+        </div>
+        <div class="countdown-label">
+            until 2025
+        </div>
+
+    </div>
+
+
+    <script>
+        const targetDate = new Date('2025-01-01T00:00:00')
+        //  console.log(targetDate)
+
+        function updateCountdown() {
+            const currentDate = new Date()
+            // console.log(currentDate)
+
+            const timeDifference = targetDate - currentDate
+            // console.log(timeDifference)
+
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24))
+            const hours = Math.floor(((timeDifference / (1000 * 60 * 60)) % 24))
+            const mins = Math.floor((timeDifference / (1000 * 60)) % 60)
+            const sec = Math.floor(((timeDifference / (1000)) % 60))
+
+
+            document.getElementById('countdown').innerHTML = `${days}d ${hours}h ${mins}m ${sec}s`
+
+            setTimeout(updateCountdown, 1000)
+        }
+
+        updateCountdown()
+
+    </script>
+</body>
+
+</html>
